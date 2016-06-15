@@ -78,6 +78,11 @@ security:
     basic:
         enabled: false
 
+info:
+    project:
+        artifactId: #project.artifactId#
+        version: #project.version#
+
 # ===================================================================
 # JHipster specific properties
 # ===================================================================
