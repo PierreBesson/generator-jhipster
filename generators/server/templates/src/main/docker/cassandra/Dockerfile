@@ -1,3 +1,4 @@
+# Cassandra Migration Container Dockerfile only used for creating an automated build at Docker Hub
 FROM cassandra:3.9
 
 # script to orchestrate the automatic keyspace creation and apply all migration scripts
