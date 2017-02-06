@@ -72,8 +72,8 @@ function writeFiles() {
                 // dockerfiles
                 this.template(DOCKER_DIR + 'cassandra/_Cassandra-Migration.Dockerfile', DOCKER_DIR + 'cassandra/Cassandra-Migration.Dockerfile', this, {});
                 // scripts
-                this.template(DOCKER_DIR + 'cassandra/scripts/_autoMigrate.sh', DOCKER_DIR + 'cassandra/scripts/autoMigrate.sh', this, {});
-                this.template(DOCKER_DIR + 'cassandra/scripts/_execute-cql.sh', DOCKER_DIR + 'cassandra/scripts/execute-cql.sh', this, {});
+                this.copy(DOCKER_DIR + 'cassandra/scripts/autoMigrate.sh', DOCKER_DIR + 'cassandra/scripts/autoMigrate.sh', this, {});
+                this.copy(DOCKER_DIR + 'cassandra/scripts/execute-cql.sh', DOCKER_DIR + 'cassandra/scripts/execute-cql.sh', this, {});
             }
             if (this.searchEngine === 'elasticsearch') {
                 this.template(DOCKER_DIR + '_elasticsearch.yml', DOCKER_DIR + 'elasticsearch.yml', this, {});
