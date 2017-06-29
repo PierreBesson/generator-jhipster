@@ -118,6 +118,9 @@ objects:
             - name: EUREKA_SERVER_RENAWAL_THRESHOLD_UPDATE_INTERVAL_MS
               value: '15000'
             # this might not be required as the service-url is defined in configMap as well. If there is no impact, this can be safely removed
+            # Config Server encryption
+            # - name: ENCRYPT_KEY
+            #   value: my-secret-encryption-key-to-change-in-production
             command:
               - "/bin/sh"
               - "-ec"

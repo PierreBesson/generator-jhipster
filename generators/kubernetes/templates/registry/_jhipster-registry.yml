@@ -109,6 +109,8 @@ spec:
         # Example "prod" configuration
         # - name: SPRING_PROFILES_ACTIVE
         #   value: prod
+        # - name: ENCRYPT_KEY
+        #   value: my-secret-encryption-key-to-change-in-production
         # - name: GIT_URI
         #   value: https://github.com/jhipster/jhipster-registry/
         # - name: GIT_SEARCH_PATHS

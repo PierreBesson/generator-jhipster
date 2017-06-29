@@ -30,6 +30,8 @@ services:
             - SPRING_PROFILES_ACTIVE=dev
             - SECURITY_USER_PASSWORD=admin
             - SPRING_CLOUD_CONFIG_SERVER_NATIVE_SEARCH_LOCATIONS=file:./central-config/localhost-config/
+            # Uncomment to enable the JHipster Registry encryption feature
+            # - ENCRYPT_KEY=my-secret-encryption-key-to-change-in-production
             # - GIT_URI=https://github.com/jhipster/jhipster-registry/
             # - GIT_SEARCH_PATHS=central-config
         ports:
