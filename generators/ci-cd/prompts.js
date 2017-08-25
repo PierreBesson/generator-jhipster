@@ -34,7 +34,8 @@ function askPipelines() {
                 { name: 'Jenkins pipeline', value: 'jenkins' },
                 { name: 'Travis CI', value: 'travis' },
                 { name: 'GitLab CI', value: 'gitlab' },
-                { name: 'CircleCI', value: 'circle' }
+                { name: 'CircleCI', value: 'circle' },
+                { name: 'Root Dockerfile', value: 'dockerfile' }
             ]
         }
     ];

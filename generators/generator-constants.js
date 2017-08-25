@@ -19,6 +19,7 @@
 
 // version of docker images
 const DOCKER_JHIPSTER_REGISTRY = 'jhipster/jhipster-registry:v3.1.2';
+const DOCKER_JAVA_JDK = 'openjdk:8';
 const DOCKER_JAVA_JRE = 'openjdk:8-jre-alpine';
 const DOCKER_MYSQL = 'mysql:5.7.19';
 const DOCKER_MARIADB = 'mariadb:10.1.17';
@@ -157,6 +158,7 @@ const constants = {
     JHIPSTER_DOCUMENTATION_ARCHIVE_PATH,
 
     DOCKER_JHIPSTER_REGISTRY,
+    DOCKER_JAVA_JDK,
     DOCKER_JAVA_JRE,
     DOCKER_MYSQL,
     DOCKER_MARIADB,

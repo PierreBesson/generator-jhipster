@@ -46,6 +46,7 @@ module.exports = PipelineGenerator.extend({
             this.herokuAppName = this.config.get('herokuAppName');
             this.clientFramework = this.config.get('clientFramework');
             this.testFrameworks = this.config.get('testFrameworks');
+            this.serverPort = this.config.get('serverPort');
             this.abort = false;
         },
         initConstants() {
@@ -57,6 +58,8 @@ module.exports = PipelineGenerator.extend({
             this.DOCKER_DIR = constants.DOCKER_DIR;
             this.SERVER_MAIN_RES_DIR = constants.SERVER_MAIN_RES_DIR;
             this.DOCKER_JENKINS = constants.DOCKER_JENKINS;
+            this.DOCKER_JAVA_JDK = constants.DOCKER_JAVA_JDK;
+            this.DOCKER_JAVA_JRE = constants.DOCKER_JAVA_JRE;
         }
     },
 
@@ -95,6 +98,10 @@ module.exports = PipelineGenerator.extend({
         }
         if (this.pipelines.includes('travis')) {
             this.template('_travis.yml', '.travis.yml');
+        }
+        if (this.pipelines.includes('dockerfile')) {
+            this.template('_Dockerfile', 'Dockerfile');
+            this.copy('.dockerignore', '.dockerignore');
         }
     }
 
