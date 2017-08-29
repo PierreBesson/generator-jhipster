@@ -35,9 +35,15 @@ task buildDocker(type: Exec) {
             include "*.war*"
         }
     }
+    def dockerImageName = "<%= baseName.toLowerCase() %>:$version"
     if (OperatingSystem.current().isWindows()) {
-        commandLine 'cmd', '/c', 'docker', 'image', 'build', '-f', 'build/docker/Dockerfile', '-t', '<%= baseName.toLowerCase() %>', 'build/docker/'
+        commandLine 'cmd', '/c', 'docker', 'image', 'build', '-f', 'build/docker/Dockerfile', '-t', dockerImageName, 'build/docker/'
     } else {
-        commandLine 'docker', 'image', 'build', '-f', 'build/docker/Dockerfile', '-t', '<%= baseName.toLowerCase() %>', 'build/docker/'
+        commandLine 'docker', 'image', 'build', '-f', 'build/docker/Dockerfile', '-t', dockerImageName, 'build/docker/'
+    }
+    doLast{
+        def imageNameFile = new File("build/libs/docker/image-name")
+        imageNameFile.createNewFile()
+        imageNameFile.text = dockerImageName
     }
 }

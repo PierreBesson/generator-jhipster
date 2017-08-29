@@ -19,6 +19,11 @@
 import groovy.json.JsonSlurper
 import org.gradle.internal.os.OperatingSystem
 
+group = '<%= packageName %>'
+version = '0.0.1-SNAPSHOT'
+
+description = ''
+
 buildscript {
     repositories {
         mavenLocal()
@@ -190,11 +195,6 @@ if (project.hasProperty('zipkin')) {
     apply from: 'gradle/zipkin.gradle'
 }
 <%_ } _%>
-
-group = '<%= packageName %>'
-version = '0.0.1-SNAPSHOT'
-
-description = ''
 
 configurations {
     providedRuntime
