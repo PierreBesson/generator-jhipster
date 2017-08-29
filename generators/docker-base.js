@@ -61,22 +61,28 @@ function checkDocker() {
 function checkImages() {
     this.log('\nChecking Docker images in applications\' directories...');
 
-    let imagePath = '';
+    let imageNameFile = '';
     let runCommand = '';
     this.warning = false;
     this.warningMessage = 'To generate the missing Docker image(s), please run:\n';
+    this.dockerImageNames = {};
     this.appsFolders.forEach((appsFolder, index) => {
         const appConfig = this.appConfigs[index];
+        const appName = appConfig.baseName.toLowerCase();
         if (appConfig.buildTool === 'maven') {
-            imagePath = this.destinationPath(`${this.directoryPath + appsFolder}/target/docker/${_.kebabCase(appConfig.baseName)}-*.war`);
-            runCommand = './mvnw package -Pprod docker:build';
+            imageNameFile = this.destinationPath(`${this.directoryPath + appsFolder}/target/docker/image-name`);
+            runCommand = './mvnw package -Pprod dockerfile:build';
         } else {
-            imagePath = this.destinationPath(`${this.directoryPath + appsFolder}/build/docker/${_.kebabCase(appConfig.baseName)}-*.war`);
+            imageNameFile = this.destinationPath(`${this.directoryPath + appsFolder}/build/docker/image-name`);
             runCommand = './gradlew -Pprod bootRepackage buildDocker';
         }
-        if (shelljs.ls(imagePath).length === 0) {
+        if (shelljs.ls(imageNameFile).length === 0) {
             this.warning = true;
             this.warningMessage += `  ${chalk.cyan(runCommand)} in ${this.destinationPath(this.directoryPath + appsFolder)}\n`;
+            this.dockerImageNames[appName] = appName;
+        } else {
+            const imageName = _.trim(shelljs.cat(imageNameFile));
+            this.dockerImageNames[appName] = imageName;
         }
     });
 }

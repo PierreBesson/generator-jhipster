@@ -103,6 +103,7 @@ module.exports = DockerComposeGenerator.extend({
             if (this.defaultAppsFolders !== undefined) {
                 this.log('\nFound .yo-rc.json config file...');
             }
+            this.dockerImageNames = this.config.get('dockerImageNames');
         }
     },
 
@@ -236,6 +237,8 @@ module.exports = DockerComposeGenerator.extend({
                 yamlString = yamlArray.join('\n');
                 yamlString = yamlString.replace(/>-\n/g, '');
                 yamlString = yamlString.replace(/-\s\s+/g, '- ');
+                // Tweak the image name to add correct version tag
+                yamlString = yamlString.replace(`image: ${lowercaseBaseName}`, `image: ${this.dockerImageNames[lowercaseBaseName]}`);
                 this.appsYaml.push(yamlString);
             });
         },
@@ -249,6 +252,7 @@ module.exports = DockerComposeGenerator.extend({
             this.config.set('serviceDiscoveryType', this.serviceDiscoveryType);
             this.config.set('adminPassword', this.adminPassword);
             this.config.set('jwtSecretKey', this.jwtSecretKey);
+            this.config.set('dockerImageNames', this.dockerImageNames);
         }
     },
 
