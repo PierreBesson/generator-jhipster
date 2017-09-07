@@ -61,8 +61,21 @@
             </ngb-progressbar>
         </div>
         <div class="col-md-4">
-            <b jhiTranslate="metrics.jvm.gc.title">Garbage collections</b>
-            <div class="row" *ngIf="metrics.gauges['jvm.garbage.PS-MarkSweep.count']">
+            <u jhiTranslate="metrics.jvm.attributes.title">Runtime information</u>
+            <p><div class="row" *ngIf="metrics.gauges['jvm.attributes.uptime']">
+                <div class="col-md-4" jhiTranslate="metrics.jvm.attributes.uptime">Uptime</div>
+                <div class="col-md-8 text-right">{{convertMillisecondsToDuration(metrics.gauges['jvm.attributes.uptime'].value)}}</div>
+            </div>
+            <div class="row" *ngIf="metrics.gauges['jvm.attributes.name']">
+                <div class="col-md-4" jhiTranslate="metrics.jvm.attributes.name">Name</div>
+                <div class="col-md-8 text-right">{{metrics.gauges['jvm.attributes.name'].value}}</div>
+            </div>
+            <div class="row" *ngIf="metrics.gauges['jvm.attributes.vendor']">
+                <div class="col-md-4" jhiTranslate="metrics.jvm.attributes.vendor">Vendor</div>
+                <div class="col-md-8 text-right">{{metrics.gauges['jvm.attributes.vendor'].value}}</div>
+            </div></p>
+            <u jhiTranslate="metrics.jvm.gc.title">Garbage collections</u>
+            <p><div class="row" *ngIf="metrics.gauges['jvm.garbage.PS-MarkSweep.count']">
                 <div class="col-md-9" jhiTranslate="metrics.jvm.gc.marksweepcount">Mark Sweep count</div>
                 <div class="col-md-3 text-right">{{metrics.gauges['jvm.garbage.PS-MarkSweep.count'].value}}</div>
             </div>
@@ -77,7 +90,7 @@
             <div class="row" *ngIf="metrics.gauges['jvm.garbage.PS-Scavenge.time']">
                 <div class="col-md-9" jhiTranslate="metrics.jvm.gc.scavengetime">Scavenge time</div>
                 <div class="col-md-3 text-right">{{metrics.gauges['jvm.garbage.PS-Scavenge.time'].value}}ms</div>
-            </div>
+            </div></p>
         </div>
     </div>
     <div class="well well-lg" *ngIf="updatingMetrics" jhiTranslate="metrics.updating">Updating...</div>

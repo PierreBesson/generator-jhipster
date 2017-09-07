@@ -93,4 +93,30 @@ export class <%=jhiPrefixCapitalized%>MetricsMonitoringComponent implements OnIn
         return input;
     }
 
+    convertMillisecondsToDuration(ms) {
+        const times = {
+            year: 31557600000,
+            month: 2629746000,
+            day: 86400000,
+            hour: 3600000,
+            minute: 60000,
+            second: 1000,
+            millisecond: 1
+        };
+
+        let time_string = '';
+        let plural = '';
+        for (const key in times) {
+            if (Math.floor(ms / times[key]) > 0) {
+                if (Math.floor(ms / times[key]) > 1 ) {
+                    plural = 's';
+                } else {
+                    plural = '';
+                }
+                time_string += Math.floor(ms / times[key]).toString() + ' ' + key.toString() + plural + ' ';
+                ms = ms - times[key] * Math.floor(ms / times[key]);
+            }
+        }
+        return time_string;
+    }
 }
