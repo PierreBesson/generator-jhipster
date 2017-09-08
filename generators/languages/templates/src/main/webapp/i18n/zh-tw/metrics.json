@@ -5,6 +5,12 @@
         "updating": "更新中...",
         "jvm": {
             "title": "JVM 資源監控",
+            "attributes": {
+                "title": "Runtime Information",
+                "uptime": "Uptime",
+                "name": "Name",
+                "vendor": "Vendor"
+            },
             "memory": {
                 "title": "記憶體",
                 "total": "記憶體總計",

@@ -5,6 +5,12 @@
         "updating": "Updating...",
         "jvm": {
             "title": "JVM Metrics",
+            "attributes": {
+                "title": "Runtime Information",
+                "uptime": "Uptime",
+                "name": "Name",
+                "vendor": "Vendor"
+            },
             "memory": {
                 "title": "Memory",
                 "total": "Total Memory",

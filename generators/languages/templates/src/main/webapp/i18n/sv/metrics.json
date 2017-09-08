@@ -5,6 +5,12 @@
         "updating": "Uppdaterar...",
         "jvm": {
             "title": "Mätningar av JVM",
+            "attributes": {
+                "title": "Runtime Information",
+                "uptime": "Uptime",
+                "name": "Name",
+                "vendor": "Vendor"
+            },
             "memory": {
                 "title": "Minne",
                 "total": "Totalt minne",

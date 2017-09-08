@@ -5,6 +5,12 @@
         "updating": "업데이트...",
         "jvm": {
             "title": "JVM 메트릭스",
+            "attributes": {
+                "title": "Runtime Information",
+                "uptime": "Uptime",
+                "name": "Name",
+                "vendor": "Vendor"
+            },
             "memory": {
                 "title": "메모리",
                 "total": "총 메모리",

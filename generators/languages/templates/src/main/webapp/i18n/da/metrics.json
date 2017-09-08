@@ -5,6 +5,12 @@
         "updating": "Ajourføring...",
         "jvm": {
             "title": "JVM målinger",
+            "attributes": {
+                "title": "Runtime Information",
+                "uptime": "Uptime",
+                "name": "Name",
+                "vendor": "Vendor"
+            },
             "memory": {
                 "title": "Hukommelse",
                 "total": "Total Hukommelse",

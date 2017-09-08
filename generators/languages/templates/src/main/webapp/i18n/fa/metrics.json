@@ -5,6 +5,12 @@
         "updating": "در حال بروزرسانی ...",
         "jvm": {
             "title": "JVM معایرها",
+            "attributes": {
+                "title": "Runtime Information",
+                "uptime": "Uptime",
+                "name": "Name",
+                "vendor": "Vendor"
+            },
             "memory": {
                 "title": "حافظه",
                 "total": "حافظه کل",

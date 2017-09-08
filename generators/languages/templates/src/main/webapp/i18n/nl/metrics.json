@@ -5,6 +5,12 @@
         "updating": "Bijwerken...",
         "jvm": {
             "title": "JVM Statistieken",
+            "attributes": {
+                "title": "Runtime Information",
+                "uptime": "Uptime",
+                "name": "Name",
+                "vendor": "Vendor"
+            },
             "memory": {
                 "title": "Geheugen",
                 "total": "Totaal Geheugen",

@@ -5,6 +5,12 @@
         "updating": "Aktualizácia...",
         "jvm": {
             "title": "JVM Metriky",
+            "attributes": {
+                "title": "Runtime Information",
+                "uptime": "Uptime",
+                "name": "Name",
+                "vendor": "Vendor"
+            },
             "memory": {
                 "title": "Pamäť",
                 "total": "Celková Pamäť",

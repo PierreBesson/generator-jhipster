@@ -5,6 +5,12 @@
         "updating": "Γίνεται ανανέωση...",
         "jvm": {
             "title": "Μετρήσεις JVM",
+            "attributes": {
+                "title": "Runtime Information",
+                "uptime": "Uptime",
+                "name": "Name",
+                "vendor": "Vendor"
+            },
             "memory": {
                 "title": "Μνήμη",
                 "total": "Συνολική Μνήμη",

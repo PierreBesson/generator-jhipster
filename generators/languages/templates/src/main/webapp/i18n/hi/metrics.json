@@ -5,6 +5,12 @@
         "updating": "अद्यतन कर रहा है...",
         "jvm": {
             "title": "JVM मेट्रिक्स",
+            "attributes": {
+                "title": "Runtime Information",
+                "uptime": "Uptime",
+                "name": "Name",
+                "vendor": "Vendor"
+            },
             "memory": {
                 "title": "स्मृति",
                 "total": "कुल स्मृति",

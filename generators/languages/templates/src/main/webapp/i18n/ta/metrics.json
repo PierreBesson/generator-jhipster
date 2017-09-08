@@ -5,6 +5,12 @@
         "updating": "புதுப்பிக்கிறது...",
         "jvm": {
             "title": "JVM இயக்கும் அளவீடுகள்",
+            "attributes": {
+                "title": "Runtime Information",
+                "uptime": "Uptime",
+                "name": "Name",
+                "vendor": "Vendor"
+            },
             "memory": {
                 "title": "மெமரி",
                 "total": "மொத்த மெமரி",

@@ -5,6 +5,12 @@
         "updating": "Đang cập nhật...",
         "jvm": {
             "title": "Số liệu của máy ảo Java",
+            "attributes": {
+                "title": "Runtime Information",
+                "uptime": "Uptime",
+                "name": "Name",
+                "vendor": "Vendor"
+            },
             "memory": {
                 "title": "Bộ nhớ",
                 "total": "Tổng bộ nhớ",

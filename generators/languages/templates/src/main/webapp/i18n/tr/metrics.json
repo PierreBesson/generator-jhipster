@@ -5,6 +5,12 @@
         "updating": "Güncellenmesi...",
         "jvm": {
             "title": "JVM Ölçütleri",
+            "attributes": {
+                "title": "Runtime Information",
+                "uptime": "Uptime",
+                "name": "Name",
+                "vendor": "Vendor"
+            },
             "memory": {
                 "title": "Bellek",
                 "total": "Toplam Bellek",

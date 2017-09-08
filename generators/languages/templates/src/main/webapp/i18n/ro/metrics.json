@@ -5,6 +5,12 @@
         "updating": "Se recreează...",
         "jvm": {
             "title": "Metrici JVM",
+            "attributes": {
+                "title": "Runtime Information",
+                "uptime": "Uptime",
+                "name": "Name",
+                "vendor": "Vendor"
+            },
             "memory": {
                 "title": "Memorie",
                 "total": "Memorie totală",
