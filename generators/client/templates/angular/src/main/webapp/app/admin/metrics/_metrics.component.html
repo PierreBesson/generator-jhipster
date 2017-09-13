@@ -67,11 +67,11 @@
                 <div class="col-md-8 text-right">{{convertMillisecondsToDuration(metrics.gauges['jvm.attributes.uptime'].value)}}</div>
             </div>
             <div class="row" *ngIf="metrics.gauges['jvm.attributes.name']">
-                <div class="col-md-4" jhiTranslate="metrics.jvm.attributes.name">Name</div>
+                <div class="col-md-4" jhiTranslate="metrics.jvm.attributes.name">JVM Name</div>
                 <div class="col-md-8 text-right">{{metrics.gauges['jvm.attributes.name'].value}}</div>
             </div>
             <div class="row" *ngIf="metrics.gauges['jvm.attributes.vendor']">
-                <div class="col-md-4" jhiTranslate="metrics.jvm.attributes.vendor">Vendor</div>
+                <div class="col-md-4" jhiTranslate="metrics.jvm.attributes.vendor">JVM Vendor</div>
                 <div class="col-md-8 text-right">{{metrics.gauges['jvm.attributes.vendor'].value}}</div>
             </div></p>
             <u jhiTranslate="metrics.jvm.gc.title">Garbage collections</u>

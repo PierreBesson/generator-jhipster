@@ -8,8 +8,8 @@
             "attributes": {
                 "title": "Runtime Information",
                 "uptime": "Uptime",
-                "name": "Name",
-                "vendor": "Vendor"
+                "name": "JVM Name",
+                "vendor": "JVM Vendor"
             },
             "memory": {
                 "title": "Minne",
