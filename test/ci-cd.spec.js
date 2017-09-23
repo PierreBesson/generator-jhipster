@@ -400,4 +400,31 @@ describe('JHipster CI-CD Sub Generator', () => {
             assert.fileContent('.travis.yml', /heroku/);
         });
     });
+
+    describe('Root Dockerfile', () => {
+        beforeEach((done) => {
+            helpers
+                .run(require.resolve('../generators/ci-cd'))
+                .inTmpDir((dir) => {
+                    fse.copySync(path.join(__dirname, './templates/ci-cd/maven-ng2-yarn'), dir);
+                })
+                .withOptions({ skipChecks: true })
+                .withPrompts({
+                    pipelines: [
+                        'dockerfile'
+                    ]
+                })
+                .on('end', done);
+        });
+        it('creates expected files', () => {
+            assert.file(expectedFiles.dockerfile);
+            assert.noFile(expectedFiles.travis);
+            assert.noFile(expectedFiles.jenkins);
+            assert.noFile(expectedFiles.circle);
+            assert.noFile(expectedFiles.gitlab);
+        });
+        it('contains "FROM" string', () => {
+            assert.fileContent('Dockerfile', /FROM/);
+        });
+    });
 });
