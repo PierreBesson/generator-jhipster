@@ -134,7 +134,11 @@
   },
   "scripts": {
     "lint": "tslint --type-check --project './tsconfig.json' -e 'node_modules/**'",
-    "lint:fix": "<%= clientPackageManager %> run lint -- --fix",
+    <%_ if (clientPackageManager === 'npm') { _%>
+    "lint:fix": "npm run lint -- --fix",
+    <%_ } else { _%>
+    "lint:fix": "yarn run lint --fix",
+    <%_ } _%>
     "ngc": "ngc -p tsconfig-aot.json",
     "cleanup": "rimraf <%= BUILD_DIR %>{aot,www}",
     "clean-www": "rimraf <%= BUILD_DIR %>/www/app/{src,<%= BUILD_DIR %>}",
@@ -142,11 +146,19 @@
     "serve": "<%= clientPackageManager %> run start",
     "build": "<%= clientPackageManager %> run webpack:prod",
     "test": "karma start src/test/javascript/karma.conf.js",
+    <%_ if (clientPackageManager === 'npm') { _%>
     "test:watch": "<%= clientPackageManager %> test -- --watch",
     "webpack:dev": "<%= clientPackageManager %> run webpack-dev-server -- --config webpack/webpack.dev.js --progress --inline --hot --profile --port=9060 --watch-content-base",
     "webpack:build:main": "<%= clientPackageManager %> run webpack -- --config webpack/webpack.dev.js --progress --profile",
     "webpack:build": "<%= clientPackageManager %> run cleanup && <%= clientPackageManager %> run webpack:build:main",
     "webpack:prod:main": "<%= clientPackageManager %> run webpack -- --config webpack/webpack.prod.js --progress --profile",
+    <%_ } else { _%>
+    "test:watch": "<%= clientPackageManager %> test --watch",
+    "webpack:dev": "<%= clientPackageManager %> run webpack-dev-server --config webpack/webpack.dev.js --progress --inline --hot --profile --port=9060 --watch-content-base",
+    "webpack:build:main": "<%= clientPackageManager %> run webpack --config webpack/webpack.dev.js --progress --profile",
+    "webpack:build": "<%= clientPackageManager %> run cleanup && <%= clientPackageManager %> run webpack:build:main",
+    "webpack:prod:main": "<%= clientPackageManager %> run webpack --config webpack/webpack.prod.js --progress --profile",
+    <%_ } _%>
     "webpack:prod": "<%= clientPackageManager %> run cleanup && <%= clientPackageManager %> run webpack:prod:main && <%= clientPackageManager %> run clean-www",
     "webpack:test": "<%= clientPackageManager %> run test",
     "webpack-dev-server": "node --max_old_space_size=4096 node_modules/webpack-dev-server/bin/webpack-dev-server.js",
