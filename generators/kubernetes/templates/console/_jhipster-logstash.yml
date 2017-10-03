@@ -47,24 +47,19 @@ spec:
         app: jhipster-logstash
     spec:
       containers:
-      - args:
-        - logstash
-        - -f
-        - /conf/logstash.conf
-        image: <%= DOCKER_JHIPSTER_LOGSTASH %>
+      - image: <%= DOCKER_JHIPSTER_LOGSTASH %>
         name: jhipster-logstash
+        env:
+        - name: INPUT_TCP_PORT
+          value: "5000"
+        - name: INPUT_UDP_PORT
+          value: "5000"
+        - name: LOGSTASH_DEBUG
+          value: "false"
         ports:
         - containerPort: 5000
-          protocol: UDP
-        resources: {}
-        volumeMounts:
-          - name: config-volume
-            mountPath: /conf/
+        - containerPort: 9600
       restartPolicy: Always
-      volumes:
-        - name: config-volume
-          configMap:
-            name: logstash-config
 ---
 apiVersion: v1
 kind: Service
@@ -75,10 +70,18 @@ metadata:
     app: jhipster-logstash
 spec:
   ports:
-  - name: "5000"
+  - name: "5000-udp"
     port: 5000
     protocol: UDP
     targetPort: 5000
+  - name: "5000-tcp"
+    port: 5000
+    protocol: TCP
+    targetPort: 5000
+  - name: "9600"
+    port: 9600
+    protocol: TCP
+    targetPort: 9600
   selector:
     app: jhipster-logstash
 
