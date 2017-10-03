@@ -86,6 +86,8 @@ module.exports = KubernetesGenerator.extend({
             this.DOCKER_JHIPSTER_LOGSTASH = constants.DOCKER_JHIPSTER_LOGSTASH;
             this.DOCKER_JHIPSTER_CONSOLE = constants.DOCKER_JHIPSTER_CONSOLE;
             this.DOCKER_JHIPSTER_IMPORT_DASHBOARDS = constants.DOCKER_JHIPSTER_IMPORT_DASHBOARDS;
+            this.DOCKER_JHIPSTER_ZIPKIN = constants.DOCKER_JHIPSTER_ZIPKIN;
+            this.DOCKER_JHIPSTER_CURATOR = constants.DOCKER_JHIPSTER_CURATOR;
             this.DOCKER_CONSUL = constants.DOCKER_CONSUL;
             this.DOCKER_CONSUL_CONFIG_LOADER = constants.DOCKER_CONSUL_CONFIG_LOADER;
             this.DOCKER_MYSQL = constants.DOCKER_MYSQL;
@@ -138,6 +140,7 @@ module.exports = KubernetesGenerator.extend({
         askForDockerRepositoryName: prompts.askForDockerRepositoryName,
         askForDockerPushCommand: prompts.askForDockerPushCommand,
         askForJhipsterConsole: prompts.askForJhipsterConsole,
+        askForConsoleOptions: prompts.askForJhipsterConsoleOptions,
         askForPrometheusOperator: prompts.askForPrometheusOperator,
         askForKubernetesServiceType: prompts.askForKubernetesServiceType,
         askForIngressDomain: prompts.askForIngressDomain

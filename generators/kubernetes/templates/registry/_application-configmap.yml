@@ -39,6 +39,15 @@ data:
         authentication:
           jwt:
             secret: <%= jwtSecretKey %>
+    <%_ if (consoleOptions.includes('zipkin')) { _%>
+    spring:
+        zipkin:
+            base-url: http://jhipster-zipkin:9411
+            enabled: true
+        sleuth:
+            sampler:
+                percentage: 1.0
+    <%_ } _%>
   #application-prod.yml: |-
   #  configserver:
   #    status: Connected in prod
