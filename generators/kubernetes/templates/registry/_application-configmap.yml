@@ -53,3 +53,15 @@ data:
         service-url:
           defaultZone: http://admin:${jhipster.registry.password}@jhipster-registry-0.jhipster-registry.<%= kubernetesNamespace %>.svc.cluster.local:8761/eureka/,http://admin:${jhipster.registry.password}@jhipster-registry-1.jhipster-registry.<%= kubernetesNamespace %>.svc.cluster.local:8761/eureka/
   <%_ } _%>
+  <%_ if (consoleOptions.includes('zipkin')) { _%>
+    spring:
+        zipkin:
+            base-url: http://jhipster-zipkin:9411
+            enabled: true
+        sleuth:
+            sampler:
+                percentage: 1.0
+  <%_ } _%>
+  #application-prod.yml: |-
+  #  configserver:
+  #    status: Connected in prod

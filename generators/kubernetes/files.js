@@ -64,6 +64,12 @@ function writeFiles() {
                 this.template('console/_jhipster-console.yml', 'console/jhipster-console.yml');
                 this.template('console/_jhipster-import-dashboards.yml', 'console/jhipster-import-dashboards.yml');
             }
+            if (this.consoleOptions.includes('curator')) {
+                this.template('console/_jhipster-curator.yml', 'console/jhipster-curator.yml');
+            }
+            if (this.consoleOptions.includes('zipkin')) {
+                this.template('console/_jhipster-zipkin.yml', 'console/jhipster-zipkin.yml');
+            }
         },
 
         writePrometheusTpr() {
