@@ -43,11 +43,14 @@
     "jsdoc": "jsdoc --configure jsdoc-conf.json"
   },
   "dependencies": {
+    "body-parser": "1.18.2",
     "chalk": "2.3.0",
     "cheerio": "0.22.0",
     "commander": "2.11.0",
+    "connect": "3.6.5",
     "didyoumean": "1.2.1",
     "ejs": "2.5.7",
+    "express": "4.16.2",
     "glob": "7.1.2",
     "html-wiring": "1.2.0",
     "insight": "0.8.4",
@@ -57,9 +60,12 @@
     "meow": "3.7.0",
     "mkdirp": "0.5.1",
     "pluralize": "7.0.0",
+    "portfinder": "1.0.13",
     "randexp": "0.4.6",
     "semver": "5.4.1",
     "shelljs": "0.7.8",
+    "swagger-editor": "2.10.5",
+    "sway": "1.0.0",
     "tabtab": "2.2.2",
     "yeoman-environment": "2.0.5",
     "yeoman-generator": "2.0.1"

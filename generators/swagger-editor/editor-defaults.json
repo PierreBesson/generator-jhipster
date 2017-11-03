@@ -1,0 +1,38 @@
+{
+    "disableFileMenu": false,
+    "disableCodeGen": false,
+    "disableNewUserIntro": true,
+    "autocompleteExtension": {
+      "paths": {
+        ".": {
+          ".": {
+            "x-swagger-router-controller": "String",
+            "x-swagger-js-method-name": "String"
+          }
+        }
+      }
+    },
+    "analytics": {
+        "google": {
+            "id": ""
+        }
+    },
+    "useBackendForStorage": true,
+    "backendEndpoint": "./api.yml",
+    "backendHealthCheckTimeout": 5000,
+    "useYamlBackend": true,
+    "headerBranding": false,
+    "enableTryIt": true,
+    "schemaUrl": "/schema/swagger.json",
+    "importProxyUrl": "https://cors-it.herokuapp.com/?url=",
+    "examplesFolder": "sample-specs/",
+    "exampleFiles": [
+        "petstore.yaml"
+    ],
+    "codegen": {
+        "servers": "//generator.swagger.io/api/gen/servers",
+        "clients": "//generator.swagger.io/api/gen/clients",
+        "server": "//generator.swagger.io/api/gen/servers/{language}",
+        "client": "//generator.swagger.io/api/gen/clients/{language}"
+    }
+}
