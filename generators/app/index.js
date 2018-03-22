@@ -180,7 +180,7 @@ module.exports = class extends BaseGenerator {
                 }
                 this.baseName = this.config.get('baseName');
                 this.jhipsterVersion = packagejs.version;
-                if (this.jhipsterVersion === undefined) {
+                if (this.jhipsterVersion == undefined) {
                     this.jhipsterVersion = this.config.get('jhipsterVersion');
                 }
                 this.otherModules = this.config.get('otherModules');
