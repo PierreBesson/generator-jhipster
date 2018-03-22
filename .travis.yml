@@ -83,6 +83,7 @@ notifications:
   webhooks:
     urls:
       - https://webhooks.gitter.im/e/479b810ad42c816679fb
+      - https://www.travisbuddy.com/
     on_success: always  # options: [always|never|change] default: always
     on_failure: always  # options: [always|never|change] default: always
     on_start: false     # default: false
