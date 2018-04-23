@@ -534,7 +534,7 @@ const serverFiles = {
             condition: generator => !(generator.applicationType !== 'microservice' && !(generator.applicationType === 'gateway' && (generator.authenticationType === 'uaa' || generator.authenticationType === 'oauth2'))),
             path: SERVER_MAIN_SRC_DIR,
             templates: [
-                { file: 'package/config/MicroserviceSecurityConfiguration.java', renameTo: generator => `${generator.javaDir}config/MicroserviceSecurityConfiguration.java` }
+                { file: 'package/config/MicroserviceSecurityConfiguration.java', renameTo: generator => `${generator.javaDir}config/SecurityConfiguration.java` }
             ]
         },
         {
@@ -557,8 +557,16 @@ const serverFiles = {
                 { file: 'package/client/AuthorizedFeignClient.java', renameTo: generator => `${generator.javaDir}client/AuthorizedFeignClient.java` },
                 { file: 'package/client/OAuth2InterceptedFeignConfiguration.java', renameTo: generator => `${generator.javaDir}client/OAuth2InterceptedFeignConfiguration.java` },
                 { file: 'package/client/AuthorizedUserFeignClient.java', renameTo: generator => `${generator.javaDir}client/AuthorizedUserFeignClient.java` },
-                { file: 'package/client/UserFeignClientInterceptor.java', renameTo: generator => `${generator.javaDir}client/UserFeignClientInterceptor.java` },
+                { file: 'package/client/OAuth2_UserFeignClientInterceptor.java', renameTo: generator => `${generator.javaDir}client/UserFeignClientInterceptor.java` },
                 { file: 'package/client/OAuth2UserClientFeignConfiguration.java', renameTo: generator => `${generator.javaDir}client/OAuth2UserClientFeignConfiguration.java` }
+            ]
+        },
+        {
+            condition: generator => generator.applicationType === 'microservice' && generator.authenticationType === 'jwt',
+            path: SERVER_MAIN_SRC_DIR,
+            templates: [
+                { file: 'package/config/FeignConfiguration.java', renameTo: generator => `${generator.javaDir}config/FeignConfiguration.java` },
+                { file: 'package/client/JWT_UserFeignClientInterceptor.java', renameTo: generator => `${generator.javaDir}client/UserFeignClientInterceptor.java` }
             ]
         },
         {
@@ -944,7 +952,6 @@ const serverFiles = {
             condition: generator => generator.skipUserManagement && generator.authenticationType === 'oauth2',
             path: SERVER_MAIN_SRC_DIR,
             templates: [
-                { file: 'package/web/rest/AccountResource.java', renameTo: generator => `${generator.javaDir}web/rest/AccountResource.java` },
                 { file: 'package/domain/User.java', renameTo: generator => `${generator.javaDir}domain/User.java` },
                 { file: 'package/domain/Authority.java', renameTo: generator => `${generator.javaDir}domain/Authority.java` },
                 { file: 'package/service/UserService.java', renameTo: generator => `${generator.javaDir}service/UserService.java` },
@@ -959,13 +966,26 @@ const serverFiles = {
             ]
         },
         {
+            condition: generator => generator.skipUserManagement && generator.authenticationType === 'oauth2' && ['monolith', 'gateway'].includes(generator.applicationType),
+            path: SERVER_MAIN_SRC_DIR,
+            templates: [
+                { file: 'package/web/rest/AccountResource.java', renameTo: generator => `${generator.javaDir}web/rest/AccountResource.java` },
+            ]
+        },
+        {
             condition: generator => generator.skipUserManagement && generator.authenticationType === 'oauth2',
             path: SERVER_TEST_SRC_DIR,
             templates: [
-                { file: 'package/web/rest/AccountResourceIntTest.java', renameTo: generator => `${generator.testDir}web/rest/AccountResourceIntTest.java` },
                 { file: 'package/security/SecurityUtilsUnitTest.java', renameTo: generator => `${generator.testDir}security/SecurityUtilsUnitTest.java` },
                 { file: 'package/service/UserServiceIntTest.java', renameTo: generator => `${generator.testDir}service/UserServiceIntTest.java` },
                 { file: 'package/web/rest/UserResourceIntTest.java', renameTo: generator => `${generator.testDir}web/rest/UserResourceIntTest.java` },
+            ]
+        },
+        {
+            condition: generator => generator.skipUserManagement && generator.authenticationType === 'oauth2' && ['monolith', 'gateway'].includes(generator.applicationType),
+            path: SERVER_TEST_SRC_DIR,
+            templates: [
+                { file: 'package/web/rest/AccountResourceIntTest.java', renameTo: generator => `${generator.testDir}web/rest/AccountResourceIntTest.java` },
             ]
         },
         {
