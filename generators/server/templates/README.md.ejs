@@ -206,9 +206,9 @@ will generate few files:
 <%_ } _%>
 
 <%_ if (enableSwaggerCodegen) { _%>
-### Doing API-First development using swagger-codegen
+### Doing API-First development using openapi-generator
 
-[Swagger-Codegen]() is configured for this application. You can generate API code from the `src/main/resources/swagger/api.yml` definition file by running:
+[Swagger-Codegen]() is configured for this application. You can generate API code from the `src/main/resources/openapi/api.yml` definition file by running:
     <%_ if (buildTool === 'maven') { _%>
 ```bash
 ./mvnw generate-sources

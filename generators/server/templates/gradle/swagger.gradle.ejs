@@ -17,37 +17,67 @@
  limitations under the License.
 -%>
 /*
- * Plugin that provides API-first development using swagger-codegen to
- * generate Spring-MVC endpoint stubs at compile time from a swagger definition file
+ * Plugin that provides API-first development using openapi-generator to
+ * generate Spring-MVC endpoint stubs at compile time from an OpenAPI definition file
  */
-
-apply plugin: "org.detoeuf.swagger-codegen"
-
-swagger {
-    inputSpec = file('<%= SERVER_MAIN_RES_DIR %>swagger/api.yml').absolutePath
-    outputDir = file('build/swagger')
-    lang = 'spring'
-
-    addDynamicProperty 'interfaceOnly', true
-    addDynamicProperty 'java8', true
-
-    additionalProperties = [
-        'modelPackage' : '<%= packageName %>.web.api.model',
-        'apiPackage'   : '<%= packageName %>.web.api'
-    ]
-
-    systemProperties = [
-        'models' : '',
-        'apis'   : ''
-    ]
-}
-
-sourceSets {
-    main {
-        java {
-            srcDir file("${project.buildDir.path}/swagger/src/main/java")
-        }
+ buildscript {
+    dependencies {
+        classpath('io.swagger:swagger-codegen:2.2.3')
     }
 }
 
-compileJava.dependsOn('swagger')
+import io.swagger.codegen.config.CodegenConfigurator
+import io.swagger.codegen.DefaultGenerator
+
+def swaggerInput = 'src/main/resources/swagger/api.yml'
+def swaggerOutputDir = file('build/openapi')
+
+task generateApi {
+    inputs.file(swaggerInput)
+    outputs.dir(swaggerOutputDir)
+    doLast {
+        def config = new CodegenConfigurator()
+        config.setInputSpec(swaggerInput)
+        config.setOutputDir(swaggerOutputDir.path)
+        config.setLang('spring')
+        config.addDynamicProperty('interfaceOnly', true)
+        config.addDynamicProperty('java8', true)
+        config.setAdditionalProperties([
+            'modelPackage'  : 'com.mycompany.myapp.web.api',
+            'apiPackage'    : 'com.mycompany.myapp.web.api',
+            'dateLibrary'   : 'java8'
+        ])
+        config.addSystemProperty('models', '')
+        config.addSystemProperty('apis', '')
+        new DefaultGenerator().opts(config.toClientOptInput()).generate()
+    }
+}
+
+clean.doFirst {
+    delete(swaggerOutputDir)
+}
+
+configurations {
+    swagger
+}
+
+sourceSets {
+    swagger {
+        compileClasspath = configurations.swaggerCompile
+        java {
+            srcDir file("build/openapi")
+        }
+    }
+    main {
+        compileClasspath += swagger.output
+        runtimeClasspath += swagger.output
+    }
+    test {
+        compileClasspath += swagger.output
+        runtimeClasspath += swagger.output
+    }
+}
+
+compileSwaggerJava.dependsOn generateApi
+classes.dependsOn swaggerClasses
+compileJava.dependsOn compileSwaggerJava

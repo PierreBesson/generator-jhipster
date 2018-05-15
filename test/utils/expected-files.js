@@ -426,7 +426,7 @@ const expectedFiles = {
     ],
 
     swaggerCodegen: [
-        `${SERVER_MAIN_RES_DIR}swagger/api.yml`,
+        `${SERVER_MAIN_RES_DIR}openapi/api.yml`,
     ],
 
     swaggerCodegenGradle: [
