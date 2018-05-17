@@ -1,12 +1,12 @@
 ---
-name: 🤗 Support Question
+name: 🤗 Ask a support question
 about: If you have a question, please use StackOverflow!
 
 ---
 
 --------------^ Click "Preview" for a nicer view!
 
-We primarily use GitHub as an issue tracker, if your issue is not a **bug** or **feature request** then sorry you are not in the right place :wink:.
+We primarily use GitHub as an issue tracker, if your issue is not a **bug** or **feature request** then sorry you are not in the right place.
 **If you have a question** please use Stack Overflow, and tag the question with [jhipster](http://stackoverflow.com/questions/tagged/jhipster). This will help the project to keep a clean issue tracker. Also, Stack Overflow will give your question a larger audience:
 
 - This will increase your chances to get an answer

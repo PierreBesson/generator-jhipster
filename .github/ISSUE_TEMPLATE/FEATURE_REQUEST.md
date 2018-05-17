@@ -1,5 +1,5 @@
 ---
-name: 🚀 Feature Request
+name: 🚀 Request a feature
 about: Suggest an improvement.
 
 ---
