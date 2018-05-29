@@ -202,7 +202,7 @@ To put it in a nutshell, you need to:
 
 Now, running the 'jhipster' command should run your locally installed JHipster version directly from sources. Check that the symbolic link is correct with the following command :
 ```shell
-➜  ~ ll $(which jhipster)
+➜  ~ ls -l $(which jhipster)
 lrwxr-xr-x  1 username  admin    63B May 15 11:03 /usr/local/bin/jhipster -> ../../../Users/username/github/generator-jhipster/cli/jhipster.js
 ```
 You can test your setup by making a small change in your cloned generator, and running again on an existing JHipster project:
