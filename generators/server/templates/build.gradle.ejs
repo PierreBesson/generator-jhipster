@@ -457,12 +457,20 @@ task stage(dependsOn: 'bootWar') {
 }
 <%_ if (!skipClient) { _%>
 
-if (project.hasProperty('nodeInstall')) {
-    node {
-        version = "${node_version}"
-        npmVersion = "${npm_version}"
-        yarnVersion = "${yarn_version}"
-        download = true
+node {
+    version = "${node_version}"
+<%_ if (clientPackageManager === 'npm') { _%>
+    npmVersion = "${npm_version}"
+<%_ } _%>
+<%_ if (clientPackageManager === 'yarn') { _%>
+    yarnVersion = "${yarn_version}"
+<%_ } _%>
+    download = true
+}
+
+task <%= clientPackageManager %>w(type: <%= clientPackageManager.charAt(0).toUpperCase() + clientPackageManager.slice(1) %>Task, dependsOn: '<%= clientPackageManager %>_install') {
+    if (project.hasProperty('<%= clientPackageManager %>Args')) {
+        args = project.properties.<%= clientPackageManager %>Args.split(' ').toList()
     }
 }
 <%_ } _%>

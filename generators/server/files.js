@@ -227,6 +227,22 @@ const serverFiles = {
             ]
         },
     ],
+    frontendBuildToolWrappers: [
+        {
+            condition: generator => generator.clientPackageManager === 'yarn' && generator.buildTool === 'maven',
+            templates: [
+                { file: 'yarnw.maven.sh', method: 'copy', noEjs: true, renameTo: () => 'yarnw' },
+                { file: 'yarnw.maven.cmd', method: 'copy', noEjs: true, renameTo: () => 'yarnw.cmd' }
+            ]
+        },
+        {
+            condition: generator => generator.clientPackageManager === 'yarn' && generator.buildTool === 'gradle',
+            templates: [
+                { file: 'yarnw.gradle.sh', method: 'copy', noEjs: true, renameTo: () => 'yarnw' },
+                { file: 'yarnw.gradle.cmd', method: 'copy', noEjs: true, renameTo: () => 'yarnw.cmd' }
+            ]
+        },
+    ],
     serverResource: [
         {
             condition: generator => generator.clientFramework === 'react',
