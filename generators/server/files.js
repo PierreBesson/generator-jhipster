@@ -231,29 +231,45 @@ const serverFiles = {
         {
             condition: generator => generator.clientPackageManager === 'yarn' && generator.buildTool === 'maven',
             templates: [
-                { file: 'yarnw.maven.sh', method: 'copy', noEjs: true, renameTo: () => 'yarnw' },
-                { file: 'yarnw.maven.cmd', method: 'copy', noEjs: true, renameTo: () => 'yarnw.cmd' }
+                {
+                    file: 'yarnw.maven.sh', method: 'copy', noEjs: true, renameTo: () => 'yarnw'
+                },
+                {
+                    file: 'yarnw.maven.cmd', method: 'copy', noEjs: true, renameTo: () => 'yarnw.cmd'
+                }
             ]
         },
         {
             condition: generator => generator.clientPackageManager === 'npm' && generator.buildTool === 'maven',
             templates: [
-                { file: 'npmw.maven.sh', method: 'copy', noEjs: true, renameTo: () => 'npmw' },
-                { file: 'npmw.maven.cmd', method: 'copy', noEjs: true, renameTo: () => 'npmw.cmd' }
+                {
+                    file: 'npmw.maven.sh', method: 'copy', noEjs: true, renameTo: () => 'npmw'
+                },
+                {
+                    file: 'npmw.maven.cmd', method: 'copy', noEjs: true, renameTo: () => 'npmw.cmd'
+                }
             ]
         },
         {
             condition: generator => generator.clientPackageManager === 'yarn' && generator.buildTool === 'gradle',
             templates: [
-                { file: 'yarnw.gradle.sh', method: 'copy', noEjs: true, renameTo: () => 'yarnw' },
-                { file: 'yarnw.gradle.cmd', method: 'copy', noEjs: true, renameTo: () => 'yarnw.cmd' }
+                {
+                    file: 'yarnw.gradle.sh', method: 'copy', noEjs: true, renameTo: () => 'yarnw'
+                },
+                {
+                    file: 'yarnw.gradle.cmd', method: 'copy', noEjs: true, renameTo: () => 'yarnw.cmd'
+                }
             ]
         },
         {
             condition: generator => generator.clientPackageManager === 'npm' && generator.buildTool === 'gradle',
             templates: [
-                { file: 'npmw.gradle.sh', method: 'copy', noEjs: true, renameTo: () => 'npmw' },
-                { file: 'npmw.gradle.cmd', method: 'copy', noEjs: true, renameTo: () => 'npmw.cmd' }
+                {
+                    file: 'npmw.gradle.sh', method: 'copy', noEjs: true, renameTo: () => 'npmw'
+                },
+                {
+                    file: 'npmw.gradle.cmd', method: 'copy', noEjs: true, renameTo: () => 'npmw.cmd'
+                }
             ]
         },
     ],

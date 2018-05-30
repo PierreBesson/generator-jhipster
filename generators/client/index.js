@@ -392,15 +392,16 @@ module.exports = class extends BaseGenerator {
         if (this.options['skip-install']) {
             this.log(logMsg);
         } else {
-            this.installDependencies(installConfig).then(
-                () => {
-                    this.buildResult = this.spawnCommandSync(this.clientPackageManager, ['run', 'webpack:build']);
-                },
-                (err) => {
-                    this.warning('Install of dependencies failed!');
-                    this.log(logMsg);
-                }
-            );
+            this.installDependencies(installConfig)
+                .then(
+                    () => {
+                        this.buildResult = this.spawnCommandSync(`${this.clientPackageManager}w`, ['run', 'webpack:build']);
+                    },
+                    (err) => {
+                        this.warning('Install of dependencies failed!');
+                        this.log(logMsg);
+                    }
+                );
         }
     }
 

@@ -1186,4 +1186,22 @@ module.exports = class extends Generator {
             ]);
         }
     }
+
+    installDependencies(installConfig) {
+        if (this.options['install-without-wrapper']) {
+            // install dependencies through yeoman
+            return super.installDependencies(installConfig);
+        }
+        // install dependencies through JHipster wrapper scripts
+        return new Promise((() => {
+            if (installConfig.yarn) {
+                shelljs.exec('./yarnw');
+                // TODO for yarnw.cmd
+            }
+            if (installConfig.npm) {
+                shelljs.exec('./npmw install');
+                // TODO for npmw.cmd
+            }
+        }));
+    }
 };
