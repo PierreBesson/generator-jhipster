@@ -771,7 +771,8 @@
                     </annotationProcessorPaths>
                 </configuration>
             </plugin>
-            <!-- Allow local install of node and yarn binaries with
+<%_ if (clientPackageManager === 'yarn') { _%>
+            <!-- Allow local install of node and yarn with
                  mvn com.github.eirslett:frontend-maven-plugin:install-node-and-yarn -->
             <plugin>
                 <groupId>com.github.eirslett</groupId>
@@ -790,6 +791,28 @@
                     </execution>
                 </executions>
             </plugin>
+<% } %>
+<%_ if (clientPackageManager === 'npm') { _%>
+    <!-- Allow local install of node and npm with
+         mvn com.github.eirslett:frontend-maven-plugin:install-node-and-npm -->
+    <plugin>
+        <groupId>com.github.eirslett</groupId>
+        <artifactId>frontend-maven-plugin</artifactId>
+        <version>${frontend-maven-plugin.version}</version>
+        <executions>
+            <execution>
+                <id>default-cli</id>
+                <goals>
+                    <goal>install-node-and-npm</goal>
+                </goals>
+                <configuration>
+                    <nodeVersion>${node.version}</nodeVersion>
+                    <npmVersion>${npm.version}</npmVersion>
+                </configuration>
+            </execution>
+        </executions>
+    </plugin>
+<% } %>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-eclipse-plugin</artifactId>
