@@ -1188,7 +1188,7 @@ module.exports = class extends Generator {
     }
 
     installDependencies(installConfig) {
-        if (this.options['install-without-wrapper']) {
+        if (this.options['install-without-wrapper'] || this.skipClient) {
             // install dependencies through yeoman
             return super.installDependencies(installConfig);
         }

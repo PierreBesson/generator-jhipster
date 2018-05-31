@@ -229,7 +229,7 @@ const serverFiles = {
     ],
     frontendBuildToolWrappers: [
         {
-            condition: generator => generator.clientPackageManager === 'yarn' && generator.buildTool === 'maven',
+            condition: generator => generator.clientPackageManager === 'yarn' && generator.buildTool === 'maven' && !generator.skipClient,
             templates: [
                 {
                     file: 'yarnw.maven.sh', method: 'copy', noEjs: true, renameTo: () => 'yarnw'
@@ -240,7 +240,7 @@ const serverFiles = {
             ]
         },
         {
-            condition: generator => generator.clientPackageManager === 'npm' && generator.buildTool === 'maven',
+            condition: generator => generator.clientPackageManager === 'npm' && generator.buildTool === 'maven' && !generator.skipClient,
             templates: [
                 {
                     file: 'npmw.maven.sh', method: 'copy', noEjs: true, renameTo: () => 'npmw'
@@ -251,7 +251,7 @@ const serverFiles = {
             ]
         },
         {
-            condition: generator => generator.clientPackageManager === 'yarn' && generator.buildTool === 'gradle',
+            condition: generator => generator.clientPackageManager === 'yarn' && generator.buildTool === 'gradle' && !generator.skipClient,
             templates: [
                 {
                     file: 'yarnw.gradle.sh', method: 'copy', noEjs: true, renameTo: () => 'yarnw'
@@ -262,7 +262,7 @@ const serverFiles = {
             ]
         },
         {
-            condition: generator => generator.clientPackageManager === 'npm' && generator.buildTool === 'gradle',
+            condition: generator => generator.clientPackageManager === 'npm' && generator.buildTool === 'gradle' && !generator.skipClient,
             templates: [
                 {
                     file: 'npmw.gradle.sh', method: 'copy', noEjs: true, renameTo: () => 'npmw'
