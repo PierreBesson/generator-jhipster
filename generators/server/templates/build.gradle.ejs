@@ -471,3 +471,4 @@ thinResolvePrepare {
 compileJava.dependsOn processResources
 processResources.dependsOn cleanResources,bootBuildInfo
 bootBuildInfo.mustRunAfter cleanResources
+bootJar.dependsOn = [thinProperties]
