@@ -23,7 +23,7 @@
     <groupId><%= packageName %></groupId>
     <artifactId><%= dasherizedBaseName %></artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
     <name><%= humanizedBaseName %></name>
 
     <repositories>
@@ -74,6 +74,7 @@
         <%_ if (clientPackageManager === 'yarn') { _%>
         <yarn.version>v<%= YARN_VERSION %></yarn.version>
         <%_ } _%>
+        <spring-boot-thin-layout.version>1.0.11.RELEASE</spring-boot-thin-layout.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <project.testresult.directory>${project.build.directory}/test-results</project.testresult.directory>
@@ -1447,6 +1448,53 @@
                 <!-- default Spring profiles -->
                 <spring.profiles.active>prod${profile.swagger}${profile.no-liquibase}</spring.profiles.active>
             </properties>
+        </profile>
+        <profile>
+            <!--
+                Profile for packaging the app as a thin executable jar separated from its dependencies.
+            -->
+            <id>thin</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-maven-plugin</artifactId>
+                        <version>${spring-boot.version}</version>
+                        <dependencies>
+                            <dependency>
+                                <groupId>org.springframework.boot.experimental</groupId>
+                                <artifactId>spring-boot-thin-layout</artifactId>
+                                <version>${spring-boot-thin-layout.version}</version>
+                            </dependency>
+                        </dependencies>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.springframework.boot.experimental</groupId>
+                        <artifactId>spring-boot-thin-maven-plugin</artifactId>
+                        <version>${spring-boot-thin-layout.version}</version>
+                        <executions>
+                            <execution>
+                                <id>resolve</id>
+                                <goals>
+                                    <goal>resolve</goal>
+                                </goals>
+                                <inherited>false</inherited>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/thin</outputDirectory>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>com.spotify</groupId>
+                        <artifactId>dockerfile-maven-plugin</artifactId>
+                        <version>${dockerfile-maven-plugin.version}</version>
+                        <configuration>
+                            <contextDirectory>${project.build.directory}/thin</contextDirectory>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
         </profile>
         <profile>
             <!--

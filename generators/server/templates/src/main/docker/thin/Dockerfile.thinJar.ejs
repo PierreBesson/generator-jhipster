@@ -16,23 +16,7 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 -%>
-FROM <%= DOCKER_JAVA_JRE %>
+<% include ../dockerfile_root %>
 
-ENV SPRING_OUTPUT_ANSI_ENABLED=ALWAYS \
-    JHIPSTER_SLEEP=0 \
-    JAVA_OPTS="<%_ if (cacheProvider === 'infinispan') { _%>-Djgroups.tcp.address=NON_LOOPBACK -Djava.net.preferIPv4Stack=true<%_ } _%>"
-
-# Add a jhipster user to run our application so that it doesn't need to run as root
-RUN adduser -D -s /bin/sh jhipster
-WORKDIR /home/jhipster
-
-ADD entrypoint.sh entrypoint.sh
-RUN chmod 755 entrypoint.sh && chown jhipster:jhipster entrypoint.sh
-USER jhipster
-
-ADD *.war app.war
-
-ENTRYPOINT ["./entrypoint.sh"]
-
-EXPOSE <%= serverPort %><% if (cacheProvider === 'hazelcast') { %> 5701/udp<% } %>
-
+ADD repository repository/
+ADD *.jar app.jar

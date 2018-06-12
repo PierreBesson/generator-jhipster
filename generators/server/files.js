@@ -60,11 +60,13 @@ const serverFiles = {
         {
             path: DOCKER_DIR,
             templates: [
-                'Dockerfile',
-                'entrypoint.sh',
                 '.dockerignore',
                 'app.yml',
-                'sonar.yml'
+                'sonar.yml',
+                { file: 'Dockerfile.fatJar', renameTo: () => 'Dockerfile' },
+                { file: 'entrypoint.sh', renameTo: () => 'entrypoint.sh' },
+                { file: 'thin/Dockerfile.thinJar', renameTo: () => 'thin/Dockerfile' },
+                { file: 'entrypoint.sh', renameTo: () => 'thin/entrypoint.sh' }
             ]
         },
         {

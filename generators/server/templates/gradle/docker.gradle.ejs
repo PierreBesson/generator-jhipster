@@ -30,7 +30,7 @@ apply plugin: com.bmuschko.gradle.docker.DockerRemoteApiPlugin
 
 import com.bmuschko.gradle.docker.tasks.image.DockerBuildImage
 
-task copyDockerFiles(type: Copy) {
+task copyDockerFiles(type: Copy, dependsOn: 'bootJar') {
     description = "Copy Dockerfile and required data to build directory"
     from 'src/main/docker'
     from "${project.buildDir}/libs"
@@ -45,3 +45,20 @@ task buildDocker(type: DockerBuildImage, dependsOn: 'copyDockerFiles') {
     inputDir = project.file("${project.buildDir}/docker")
     tags = ["<%= baseName.toLowerCase() %>:latest".toString(), "<%= baseName.toLowerCase() %>:${project.version}".toString()]
 }
+
+
+task copyThinDockerFiles(type: Copy, , dependsOn: 'thinResolve') {
+    description = "Copy Dockerfile and required data to build directory"
+    from 'src/main/docker/thin'
+    into { "${project.buildDir}/thin" }
+    include "*"
+    exclude "**/*.yml"
+}
+
+task buildThinDocker(type: DockerBuildImage, dependsOn: 'copyThinDockerFiles') {
+    description = "Package application as Docker image using layered strategy"
+    group = "Docker"
+    inputDir = project.file("${project.buildDir}/thin")
+    tags = ["<%= baseName.toLowerCase() %>:latest".toString(), "<%= baseName.toLowerCase() %>:${project.version}".toString()]
+}
+
