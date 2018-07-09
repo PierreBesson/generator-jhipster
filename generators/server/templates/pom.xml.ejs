@@ -775,9 +775,8 @@
                             <version>[${maven.version},)</version>
                         </requireMavenVersion>
                         <requireJavaVersion>
-                            <!-- Until JHipster supports JDK 9 -->
-                            <message>You are running an incompatible version of Java. JHipster requires JDK ${java.version}</message>
-                            <version>[1.8,1.9)</version>
+                            <message>You are running an incompatible version of Java. JHipster requires JDK >= ${java.version}</message>
+                            <version>[${java.version},)</version>
                         </requireJavaVersion>
                     </rules>
                 </configuration>
