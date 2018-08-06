@@ -111,6 +111,7 @@ module.exports = class extends BaseGenerator {
         this.context = {};
 
         this.setupEntityOptions(this, this, this.context);
+        this.registerServerTransforms();
         this.registerClientTransforms();
         const blueprint = this.config.get('blueprint');
         if (!opts.fromBlueprint) {

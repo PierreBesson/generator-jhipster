@@ -120,6 +120,7 @@ function importJDL() {
 module.exports = class extends ImporterGenerator {
     constructor(args, opts) {
         super(args, opts);
+        this.registerServerTransforms();
         this.registerClientTransforms();
         this.applicationsLeftToGenerate = [];
         this.entitiesLeftToGenerate = [];

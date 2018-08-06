@@ -145,6 +145,7 @@ module.exports = class extends BaseGenerator {
         this.useYarn = this.configOptions.useYarn = !this.options.npm;
         this.isDebugEnabled = this.configOptions.isDebugEnabled = this.options.debug;
         this.experimental = this.configOptions.experimental = this.options.experimental;
+        this.registerServerTransforms();
         this.registerClientTransforms();
     }
 

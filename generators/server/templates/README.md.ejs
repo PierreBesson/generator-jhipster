@@ -17,6 +17,9 @@
  limitations under the License.
 -%>
 # <%= baseName %>
+
+<!-- toc -->
+<!-- Update the table of content with `markdown-toc -i README.md` -->
 <%_
 let clientPackageMngrName = 'Npm';
 let clientPackageMngrAddGlobal = 'install -g';
@@ -42,6 +45,8 @@ This application is configured for Service Discovery and Configuration with <% i
 
 ## Development
 
+### Environment setup
+
 <%_ if (skipClient) { _%>
 To start your application in the dev profile, simply run:
 
@@ -62,6 +67,8 @@ After installing Node, you should be able to run the following command to instal
 You will only need to run this command when dependencies change in [package.json](package.json).
 
     <%= clientPackageManager %> install
+
+### General development workflow
 
 We use <%= clientPackageManager %> scripts and [Webpack][] as our build system.
 
@@ -241,11 +248,14 @@ Refer to [Using JHipster in production][] for more details.
 
 ## Testing
 
+### Backend-tests
+
 To launch your application's tests, run:
 
     <% if (buildTool === 'maven') { %>./mvnw clean test<% } else { %>./gradlew test<% } %>
 <% if (!skipClient) { %>
-### Client tests
+
+### Front-end tests
 
 Unit tests are run by [Jest][] and written with [Jasmine][]. They're located in [<%= CLIENT_TEST_SRC_DIR %>](<%= CLIENT_TEST_SRC_DIR %>) and can be run with:
 

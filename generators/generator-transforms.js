@@ -1,5 +1,6 @@
 const through = require('through2');
 const prettier = require('prettier');
+const mardownToc = require('markdown-toc');
 
 const prettierOptions = {
     printWidth: 140,
@@ -29,7 +30,18 @@ const prettierTransform = function (defaultOptions) {
     return through.obj(transform);
 };
 
+const mardownTableOfContentTransform = function () {
+    const transform = (file, encoding, callback) => {
+        const str = file.contents.toString('utf8');
+        const data = mardownToc.insert(str);
+        file.contents = Buffer.from(data);
+        callback(null, file);
+    };
+    return through.obj(transform);
+};
+
 module.exports = {
     prettierTransform,
-    prettierOptions
+    prettierOptions,
+    mardownTableOfContentTransform
 };

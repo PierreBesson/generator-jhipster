@@ -36,7 +36,8 @@ const jhipsterUtils = require('./utils');
 const constants = require('./generator-constants');
 const {
     prettierTransform,
-    prettierOptions
+    prettierOptions,
+    mardownTableOfContentTransform
 } = require('./generator-transforms');
 
 const CLIENT_MAIN_SRC_DIR = constants.CLIENT_MAIN_SRC_DIR;
@@ -1177,6 +1178,27 @@ module.exports = class extends Generator {
             return '../';
         }
         return '';
+    }
+
+    /**
+     * Register file transforms for server side files
+     * @param {any} generator
+     */
+    registerServerTransforms(generator = this) {
+        // Setup a markdown-toc transform to add dynamic table of contents
+        const markdownTocFilter = filter(['**/*.md'], { restore: true });
+        generator.registerTransformStream([
+            markdownTocFilter,
+            mardownTableOfContentTransform(),
+            markdownTocFilter.restore
+        ]);
+        // Setup a prettier transform for markdown files
+        const markdownPrettierFilter = filter(['**/*.md'], { restore: true });
+        generator.registerTransformStream([
+            markdownPrettierFilter,
+            prettierTransform(prettierOptions),
+            markdownPrettierFilter.restore
+        ]);
     }
 
     /**
