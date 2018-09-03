@@ -84,6 +84,17 @@ Before you submit your pull request consider the following guidelines:
      ```shell
      mvn spring-boot:run
      ```
+* If you have modified package.json dependencies, you will need to regenerate lockfiles for both npm and yarn. To do this correctly, if you use npm:
+
+     ```shell
+     npm run update-lockfiles
+     ```
+
+Or if you use yarn:
+    ```shell
+     yarn update-lockfiles
+     ```
+
 * You can also run our travis build locally by following [this](#local-travis-build)
 
 * Commit your changes using a descriptive commit message that follows our
