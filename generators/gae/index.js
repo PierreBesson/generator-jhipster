@@ -694,7 +694,7 @@ module.exports = class extends BaseGenerator {
 
             addGradlePlugin() {
                 if (this.buildTool === 'gradle') {
-                    this.addGradlePlugin('com.google.cloud.tools', 'appengine-gradle-plugin', '1.3.3');
+                    this.addGradlePlugin('com.google.cloud.tools', 'appengine-gradle-plugin', '1.3.5');
                     this.applyFromGradleScript('gradle/gae');
                 }
             },
