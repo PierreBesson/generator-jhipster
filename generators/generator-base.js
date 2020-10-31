@@ -1817,12 +1817,12 @@ module.exports = class JHipsterBaseGenerator extends PrivateBase {
      */
     printJHipsterLogo() {
         this.log('\n');
-        this.log(`${chalk.green('        ██╗')}${chalk.red(' ██╗   ██╗ ████████╗ ███████╗   ██████╗ ████████╗ ████████╗ ███████╗')}`);
-        this.log(`${chalk.green('        ██║')}${chalk.red(' ██║   ██║ ╚══██╔══╝ ██╔═══██╗ ██╔════╝ ╚══██╔══╝ ██╔═════╝ ██╔═══██╗')}`);
-        this.log(`${chalk.green('        ██║')}${chalk.red(' ████████║    ██║    ███████╔╝ ╚█████╗     ██║    ██████╗   ███████╔╝')}`);
-        this.log(`${chalk.green('  ██╗   ██║')}${chalk.red(' ██╔═══██║    ██║    ██╔════╝   ╚═══██╗    ██║    ██╔═══╝   ██╔══██║')}`);
-        this.log(`${chalk.green('  ╚██████╔╝')}${chalk.red(' ██║   ██║ ████████╗ ██║       ██████╔╝    ██║    ████████╗ ██║  ╚██╗')}`);
-        this.log(`${chalk.green('   ╚═════╝ ')}${chalk.red(' ╚═╝   ╚═╝ ╚═══════╝ ╚═╝       ╚═════╝     ╚═╝    ╚═══════╝ ╚═╝   ╚═╝')}\n`);
+        this.log(` ${chalk.blue('▗▇████▇▆▅▃▂▁')}      ${chalk.blue('▁▂▃▅▆▇████▇▖') }${chalk.green('        ██╗')}${chalk.red(' ██╗   ██╗ ████████╗ ███████╗   ██████╗ ████████╗ ████████╗ ███████╗')}`);
+        this.log(`${chalk.blue('▐██████████████████████████████▍')}${chalk.green('       ██║')}${chalk.red(' ██║   ██║ ╚══██╔══╝ ██╔═══██╗ ██╔════╝ ╚══██╔══╝ ██╔═════╝ ██╔═══██╗')}`);
+        this.log(`${chalk.blue('▟██████████████████████████████▊')}${chalk.green('       ██║')}${chalk.red(' ████████║    ██║    ███████╔╝ ╚█████╗     ██║    ██████╗   ███████╔╝')}`);
+        this.log(`${chalk.blue('████████████')}         ${chalk.blue('███████████')} ${chalk.green('██╗   ██║')}${chalk.red(' ██╔═══██║    ██║    ██╔════╝   ╚═══██╗    ██║    ██╔═══╝   ██╔══██║')}`);
+        this.log(`${chalk.blue('▜██████')}                 ${chalk.blue('██████▛')}${chalk.green('  ╚██████╔╝')}${chalk.red(' ██║   ██║ ████████╗ ██║       ██████╔╝    ██║    ████████╗ ██║  ╚██╗')}`);
+        this.log(`  ${chalk.blue('▔')}                         ${chalk.blue('▔')}  ${chalk.green('   ╚═════╝ ')}${chalk.red(' ╚═╝   ╚═╝ ╚═══════╝ ╚═╝       ╚═════╝     ╚═╝    ╚═══════╝ ╚═╝   ╚═╝')}\n`);
         this.log(chalk.white.bold('                            https://www.jhipster.tech\n'));
         this.log(chalk.white('Welcome to JHipster ') + chalk.yellow(`v${packagejs.version}`));
         this.log(chalk.white(`Application files will be generated in folder: ${chalk.yellow(process.cwd())}`));
